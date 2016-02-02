@@ -21,9 +21,27 @@ public class Complex {
 		return new Complex(real, imag);
 	}
 
-	public Complex abs()
+	public double abs() {
+		return Math.sqrt(re*re + im*im);
+	}
+
+	public double re() {
+		return re;
+	}
+
+	public double im() {
+		return im;
+	}
+
+	public String toString() {
+		return re + " + " + im + "i";
+	}
 
 	public static void main(String[] args) {
-		
+		Complex z0 = new Complex(1.0, 1.0);
+		Complex z = z0;
+		z = z.times(z).plus(z0);
+		z = z.times(z).plus(z0);
+		StdOut.println(z);
 	}
 }

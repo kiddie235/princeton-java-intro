@@ -1,5 +1,5 @@
 
-public class Counter {
+public class Counter implements Comparable<Counter> {
     private final String name;
     private final int maxCount;
     private int count;
@@ -11,6 +11,7 @@ public class Counter {
     public void increment() {
         if (count < maxCount)
             count++;
+        assert count >= 0 : "Negative count detected in increment()";
     }
 
     public int value() {
@@ -19,6 +20,12 @@ public class Counter {
 
     public String toString() {
         return name + ": " + count;
+    }
+
+    public int compareTo(Counter b) {
+        if (count < b.count) return -1;
+        if (count > b.count) return +1;
+        else                 return  0;
     }
 
     public static void main(String[] args) {

@@ -1,18 +1,22 @@
 public class TwentyQuestions {
-	
-	public static void main(String[] args) {
-		int N = 1 + (int) (Math.random() * 1000000);
 
-		StdOut.print("I'm thinking of a number ");
-		StdOut.println("between 1 and 1000000");
-		int m = 0;
-		while (m != N) {
-			//solicit one guess and provide one answer
-			StdOut.print("What's your guess? ");
-			m = StdIn.readInt();
-			if (m == N) StdOut.println("You win!");
-			if (m < N)  StdOut.println("Too low");
-			if (m > N)  StdOut.println("Too high");
-		}
+	public static int search(int lo, int hi) {
+		//find number in [lo, hi)
+		if (hi - lo == 1) return lo;
+		int mid = lo + (hi - lo) / 2;
+		StdOut.print("Less than " + mid + "? ");
+		if (StdIn.readBoolean())
+			return search(lo, mid);
+		else
+			return search(mid, hi);
+	}
+
+	public static void main(String[] args) {
+		int n = Integer.parseInt(args[0]);
+		int N = (int) Math.pow(2, n);
+		StdOut.print("Think of a number ");
+		StdOut.println("between 0 and " + (N - 1));
+		int v = search(0, N);
+		StdOut.println("Your number is " + v);
 	}
 }

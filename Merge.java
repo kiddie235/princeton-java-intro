@@ -23,6 +23,7 @@ public class Merge {
     ***************************************************************************/
     private static void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int hi) {
         int i = lo, j = mid;
+        //investigate for signature
         for (int k = lo; k < hi; k++) {
             if      (i == mid)                 aux[k] = a[j++];
             else if (j == hi)                  aux[k] = a[i++];
